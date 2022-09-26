@@ -2,23 +2,36 @@ var timerEl = document.queryselector(".time");
 var timeLeft = doucment.queryselector(".timeleft");
 var mainEl = document.querySelector(".main");
 var textAreaEl = document.querySelector("#textarea");
+var seconds = Math.floor((distance % (75000 * 60)) / 1000);
 
 var questionList = ["Commonly used data types do not inculde: ", "The condition in an if / else statement is enclosed within ____", "Arrays in Javascript can be used to store", "String values must be enclosed within ____ when being assigned to variables", "A very usedful tool used in web development and debugging for printing content to the debugger"]
 
-var secondsLeft = 75;
-
 // call a countdown function that starts at 75 seconds
 
-function setTime() {
-    var timerInterval = setInterval(function() {
-        secondsLeft--;
-        timeEl.textContent = secondsLeft
+function countdown() {
+    setTimeout(decrement(), 75000)
+}
 
-        if(secondsLeft === 0) {
-            clearInterval(timerInterval);
-            sendMessage();
+//decrement function and value
+function decrement() {
+    if (document.getElementById) {
+        seconds = document.getElementById("seconds");
+
+        // if less than 75 seconds remain, display seconds value
+        if (seconds < 75) {
+            seconds.value = seconds;
+        } else {
+            seconds.value = getseconds();
         }
-    }, 1000);
+        if (seconds === 0) {
+            alert("time's up");
+            seconds.value = 0;
+        } else {
+            seconds--;
+            setTimeout (decrement(), 75000);
+        }
+
+    }
 }
 
 // 10 seconds are subtracted from the countdown when user selects the incorrect answer. They're still directed to the next section though.
@@ -29,12 +42,24 @@ function guessedAnswer() {
         timeLeft -= 10;
         time.textContent = timeLeft;
     }
-
     if (questionlist[i]) {
         score = timeLeft;
         GameOver()
     } else {
         renderQuestion()
+    }
+}
+
+// stores user's initials in the computer
+function renderLastRegistered() {
+    var initials = localStorage.getItem("initials");
+    if (initials === "") {
+        displayMessage("error", "initials cannot be blank");
+    } else {
+        displayMessage("success", "registered successfully");
+
+        localStorage.setItem("initials");
+        renderLastRegistered();
     }
 }
 
@@ -46,3 +71,4 @@ function highScore() {
 function highScore() {
     clearInterval(countdown);
 }
+
