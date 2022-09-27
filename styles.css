@@ -1,0 +1,33 @@
+.h1 {
+    font-style: "Arial", "Helvetica", sans serif; 
+    font-weight: bold;
+    justify-content: center;
+}
+
+.h2 {
+    font-style: "Arial", "Helvetica", sans serif;
+    font-weight: bold;
+    justify-content: flex-start;
+}
+
+.h3 {
+    font-style: "Arial", "Helvetica", sans serif;
+    font-weight: bold;
+    justify-content: flex-start;
+}
+
+.li {
+    display: block;
+    border-radius: 15px;
+    justify-content: flex-start;
+    background-color: purple;
+}
+
+.p {
+    font-style: "Arial", "Helvetica", sans serif;
+    justify-content: flex-start;
+}
+
+.form {
+    display: inline;
+}

@@ -1,15 +1,40 @@
-var timerEl = document.queryselector(".time");
-var timeLeft = doucment.queryselector(".timeleft");
+var score = 0;
+var index = 0;
+var timerEl = document.getElementById(".timer");
+var startButton = document.getElementById("#start");
+var timeLeft = document.querySelector(".timeleft");
 var mainEl = document.querySelector(".main");
 var textAreaEl = document.querySelector("#textarea");
-var seconds = Math.floor((distance % (75000 * 60)) / 1000);
+var seconds = 75000;
 
-var questionList = ["Commonly used data types do not inculde: ", "The condition in an if / else statement is enclosed within ____", "Arrays in Javascript can be used to store", "String values must be enclosed within ____ when being assigned to variables", "A very usedful tool used in web development and debugging for printing content to the debugger"]
+var questionList = [
+    {
+        question: "Commonly used data types do not include:",
+        options: ["strings", "booleans", "alerts", "numbers"],
+        answer: "alerts" 
+    }, {
+        question: "The condition in an if / else statement is enclosed within ______",
+        options: ["quotes", "curly brackets", "parenthesis", "square brackets"],
+        answer:  "parenthesis"
+    }, {
+        question: "Arrays in JavaScript can be used to store _______",
+        options: ["numbers and strings", "other arrays", "booleans", "all of the above"],
+        answer: "numbers and strings"
+    }, {
+        question: "String vallues must be enclosed within ______ when being assigned to variables",
+        options: ["commas", "curly brackets", "quotes", "parenthesis"],
+        answer: "quotes"
+    }, {
+        question: "A very useful tool used during web development and debugging for printing content to the debugger",
+        options: ["javascript", "terminal bash", "for loops", "console log"],
+        asnwer: "console log"
+    }
+]
 
 // call a countdown function that starts at 75 seconds
 
 function countdown() {
-    setTimeout(decrement(), 75000)
+    setTimeout(decrement, 75000);
 }
 
 //decrement function and value
